@@ -2489,7 +2489,7 @@ def TRMA(df, n):
     return new_df
 
 
-def OPTION_BS_PRICE(df, quote=None, r=0.025, v=None):
+def BS_VALUE(df, quote=None, r=0.025, v=None):
     """
     期权 BS 模型理论价格
 
@@ -2513,7 +2513,7 @@ def OPTION_BS_PRICE(df, quote=None, r=0.025, v=None):
         api = TqApi()
         quote = api.get_quote("SHFE.cu2006C43000")
         klines = api.get_kline_serial(["SHFE.cu2006C43000", "SHFE.cu2006"], 24 * 60 * 60, 30)
-        bs_serise = OPTION_BS_PRICE(klines, quote, 0.025)
+        bs_serise = BS_VALUE(klines, quote, 0.025)
         print(list(bs_serise["bs_price"]))
         api.close()
 
@@ -2534,7 +2534,7 @@ def OPTION_BS_PRICE(df, quote=None, r=0.025, v=None):
 
         quote = api.get_quote("SHFE.cu2006C43000")
         klines = api.get_kline_serial(["SHFE.cu2006C43000", "SHFE.cu2006"], 24 * 60 * 60, 30)
-        bs_serise = OPTION_BS_PRICE(klines, quote, 0.025, v)
+        bs_serise = BS_VALUE(klines, quote, 0.025, v)
         print(list(bs_serise["bs_price"]))
         api.close()
 
